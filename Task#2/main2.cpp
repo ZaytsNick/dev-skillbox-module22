@@ -4,26 +4,27 @@
 
 int main()
 {
-    std::map<int, std::string> queue;
-    queue.insert(std::make_pair<int, std::string>(1, "Coi"));
-    queue.insert(std::make_pair<int, std::string>(2, "Pushkin"));
-    queue.insert(std::make_pair<int, std::string>(3, "Cuper"));
-    queue.insert(std::make_pair<int, std::string>(4, "Zaytsev"));
-    queue.insert(std::make_pair<int, std::string>(5, "Kipelov"));
-    std::map<int, std::string>::iterator it = queue.begin();
-    std::string another;
-    while (it != queue.end())
+    std::map<std::string, int> queue;
+    std::string another("0");
+    while (another != "-1")
     {
         std::cin >> another;
         if (another == "Next")
         {
-            std::cout << it->second;
-            it++;
+            std::cout << "-";
+            std::map<std::string, int>::iterator it = queue.begin();
+            std::cout << it->first;
+            it->second--;
+            if (it->second <= 0)
+                queue.erase(it);
+            std::cout << std::endl;
         }
         else
-        {
-            queue.insert(std::pair<int, std::string>(queue.end()->first + 1, another));
+        { // queue.end()->first + 1
+            // queue.insert(std::pair<std::string, int>(another,second++));
+            // SurnameToNumber[tmp_second].push_back(tmp_first);
+            queue[another];
+            queue.find(another)->second++;
         }
-        std::cout<<std::endl;
     }
 }
